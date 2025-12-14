@@ -1,5 +1,19 @@
 spring:
   application:
     name: Anime-Service
+  web:
+    error:
+      include-stacktrace: on_param
+  threads:
+    virtual:
+      enabled: true
+
+server:
+  servlet:
+    context-path: /
+
+
+
+
 
 

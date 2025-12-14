@@ -2,7 +2,6 @@ package br.dev.marcelojunior.model;
 
 import lombok.*;
 
-@RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

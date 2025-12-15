@@ -9,7 +9,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class AnimePostRequest {
-    private Long id;
     private String name;
     private Category category;
 }

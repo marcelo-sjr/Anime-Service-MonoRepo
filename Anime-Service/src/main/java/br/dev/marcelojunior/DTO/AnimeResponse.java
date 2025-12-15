@@ -5,11 +5,5 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-@Builder
-@AllArgsConstructor
-@Getter
-public class AnimeGetResponse {
-    private Long id;
-    private String name;
-    private Category category;
-}
+
+public record AnimeResponse(Long id, String name, Category category){}

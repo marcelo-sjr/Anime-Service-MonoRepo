@@ -5,10 +5,4 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-@Builder
-@Getter
-@AllArgsConstructor
-public class AnimePostRequest {
-    private String name;
-    private Category category;
-}
+public record AnimePostRequest(String name, Category category){}

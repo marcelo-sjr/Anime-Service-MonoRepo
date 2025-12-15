@@ -53,12 +53,17 @@ public class AnimeService {
     }
 
     public void delete(Long id){
+        findByIdOrThrow(id);
         repository.deleteById(id);
     }
 
     public void update(AnimePutRequest request){
-         repository.findById(request.id()).orElseThrow(()-> new ResponseStatusException(NOT_FOUND,"Resource not found!"));
+         findByIdOrThrow(request.id());
          repository.save(mapper.updateAnime(request));
+    }
+
+    public void findByIdOrThrow(Long id){
+        repository.findById(id).orElseThrow(()-> new ResponseStatusException(NOT_FOUND,"Resource not found!"));
     }
 
 }

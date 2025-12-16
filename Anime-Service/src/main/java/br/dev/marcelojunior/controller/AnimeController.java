@@ -1,8 +1,8 @@
 package br.dev.marcelojunior.controller;
 
+import br.dev.marcelojunior.DTO.AnimePostRequest;
 import br.dev.marcelojunior.DTO.AnimePutRequest;
 import br.dev.marcelojunior.DTO.AnimeResponse;
-import br.dev.marcelojunior.DTO.AnimePostRequest;
 import br.dev.marcelojunior.service.AnimeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

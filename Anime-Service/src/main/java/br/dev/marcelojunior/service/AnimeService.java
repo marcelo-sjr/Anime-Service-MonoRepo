@@ -1,8 +1,8 @@
 package br.dev.marcelojunior.service;
 
-import br.dev.marcelojunior.DTO.AnimeResponse;
 import br.dev.marcelojunior.DTO.AnimePostRequest;
 import br.dev.marcelojunior.DTO.AnimePutRequest;
+import br.dev.marcelojunior.DTO.AnimeResponse;
 import br.dev.marcelojunior.mapper.AnimeMapper;
 import br.dev.marcelojunior.model.Anime;
 import br.dev.marcelojunior.repository.AnimeRepository;

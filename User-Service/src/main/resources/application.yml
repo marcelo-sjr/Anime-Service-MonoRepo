@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: User-Service
+  web:
+    error:
+      include-stacktrace: on_param
+  threads:
+    virtual:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:users
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+server:
+  servlet:
+    context-path: /

@@ -15,7 +15,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
-    database: postgresql
+    database: ${DB_DIALECT:}
 
 server:
   servlet:

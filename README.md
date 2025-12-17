@@ -1,2 +1,2 @@
 # Anime-Service-MonoRepo
-SpringBoot_direto_das_trincheiras studies.
+O objetivo do App é construir uma lista de de animes, onde cada usuário poderá configurar animes que são de seu interesse, assistidos, etc.

@@ -7,6 +7,8 @@ import br.dev.marcelojunior.model.Anime;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface AnimeMapper {
 
@@ -17,5 +19,7 @@ public interface AnimeMapper {
     public AnimeResponse toResponse(Anime entity);
 
     public Anime updateAnime(AnimePutRequest request);
+
+    public List<AnimeResponse> toResponseList(List<Anime> entities);
 }
 

@@ -13,24 +13,19 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("api/v1")
+@RequestMapping("api/v1/animes")
 public class AnimeController {
 
     private final AnimeService service;
 
-    @GetMapping("list")
-    public ResponseEntity<List<AnimeResponse>> findAll(){
-        return ResponseEntity.ok(service.findAll());
+    @GetMapping()
+    public ResponseEntity<List<AnimeResponse>> findAll(@RequestParam(required = false) String name){
+        return ResponseEntity.ok(service.findAll(name));
     }
 
     @GetMapping("{id}")
     public ResponseEntity<AnimeResponse> findById(@PathVariable Long id){
         return ResponseEntity.ok(service.findById(id));
-    }
-
-    @GetMapping("filter")
-    public ResponseEntity<List<AnimeResponse>> findByName(@RequestParam String name){
-        return ResponseEntity.ok(service.findByName(name));
     }
 
     @PostMapping("save")
@@ -49,5 +44,4 @@ public class AnimeController {
         service.update(request);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-
 }

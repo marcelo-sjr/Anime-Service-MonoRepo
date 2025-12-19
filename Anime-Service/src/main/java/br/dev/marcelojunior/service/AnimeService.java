@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -21,35 +22,19 @@ public class AnimeService {
     private final AnimeRepository repository;
     private final AnimeMapper mapper = AnimeMapper.INSTANCE;
 
-    public List<AnimeResponse> findAll(){
-        return repository
-                .findAll()
-                .stream()
-                .map(mapper::toResponse)
-                .toList();
+    public List<AnimeResponse> findAll(String name){
+        if (name != null){
+            return mapper.toResponseList(repository.findByNameContainingIgnoreCase(name));
+        }
+        return mapper.toResponseList(repository.findAll());
     }
 
     public AnimeResponse findById(Long id){
-        return repository
-                .findById(id)
-                .map(mapper::toResponse)
-                .orElseThrow(()-> new ResponseStatusException(NOT_FOUND,"Resource not found!"));
-    }
-
-    public List<AnimeResponse> findByName(String name){
-        var animes = repository.findByNameContainingIgnoreCase(name)
-                .stream()
-                .map(mapper::toResponse)
-                .toList();
-        if(animes.isEmpty()){
-            throw new ResponseStatusException(NOT_FOUND,"Resource not found!");
-        }
-        return animes;
+        return mapper.toResponse(findByIdOrThrow(id));
     }
 
     public AnimeResponse save(AnimePostRequest request){
-       Anime anime = repository.save(mapper.toAnime(request));
-       return mapper.toResponse(anime);
+        return mapper.toResponse(repository.save(mapper.toAnime(request)));
     }
 
     public void delete(Long id){
@@ -62,8 +47,7 @@ public class AnimeService {
          repository.save(mapper.updateAnime(request));
     }
 
-    public void findByIdOrThrow(Long id){
-        repository.findById(id).orElseThrow(()-> new ResponseStatusException(NOT_FOUND,"Resource not found!"));
+    public Anime findByIdOrThrow(Long id){
+        return repository.findById(id).orElseThrow(()-> new ResponseStatusException(NOT_FOUND,"Resource not found!"));
     }
-
 }

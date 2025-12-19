@@ -24,7 +24,7 @@ public class User {
     private String lastName;
 
     @EqualsAndHashCode.Include
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String nickname;
 
     @Embedded

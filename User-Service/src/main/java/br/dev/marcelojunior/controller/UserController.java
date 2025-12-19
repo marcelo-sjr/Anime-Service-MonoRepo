@@ -3,6 +3,7 @@ package br.dev.marcelojunior.controller;
 import br.dev.marcelojunior.DTO.UserPostRequest;
 import br.dev.marcelojunior.DTO.UserResponse;
 import br.dev.marcelojunior.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @PostMapping("save")
-    public ResponseEntity<UserResponse> save(@RequestBody UserPostRequest request){
+    public ResponseEntity<UserResponse> save(@RequestBody @Valid UserPostRequest request){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(request));
     }
 }

@@ -1,16 +1,20 @@
 package br.dev.marcelojunior.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Builder
+@Getter
+@Setter
 @Table(name = "users")
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
     private Long id;
 
     @Column(nullable = false)
@@ -19,6 +23,11 @@ public class Users {
     @Column(nullable = false)
     private String lastName;
 
+    @EqualsAndHashCode.Include
+    @Column(unique = true)
+    private String nickname;
+
     @Embedded
+    @EqualsAndHashCode.Include
     private Email email;
 }

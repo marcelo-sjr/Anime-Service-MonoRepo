@@ -4,9 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>br.dev.marcelojunior</groupId>
+    <parent>
+        <groupId>br.dev.marcelojunior</groupId>
+        <artifactId>Anime-Service-Mono-Repo</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
     <artifactId>commons-core</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>Commons-Core</name>
 
     <properties>

@@ -3,14 +3,13 @@ package br.dev.marcelojunior.service;
 import br.dev.marcelojunior.DTO.AnimePostRequest;
 import br.dev.marcelojunior.DTO.AnimePutRequest;
 import br.dev.marcelojunior.DTO.AnimeResponse;
+import br.dev.marcelojunior.exceptions.NotFoundException;
 import br.dev.marcelojunior.mapper.AnimeMapper;
 import br.dev.marcelojunior.model.Anime;
 import br.dev.marcelojunior.repository.AnimeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.NOT_FOUND;
@@ -48,6 +47,6 @@ public class AnimeService {
     }
 
     public Anime findByIdOrThrow(Long id){
-        return repository.findById(id).orElseThrow(()-> new ResponseStatusException(NOT_FOUND,"Resource not found!"));
+        return repository.findById(id).orElseThrow(()-> new NotFoundException(NOT_FOUND,"Anime not found!"));
     }
 }

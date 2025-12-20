@@ -10,6 +10,7 @@
 	<modules>
 		<module>Anime-Service</module>
 		<module>User-Service</module>
+		<module>Commons-Core</module>
 	</modules>
 
 </project>

@@ -8,7 +8,7 @@ spring:
     virtual:
       enabled: true
   datasource:
-    url: ${DB_URL:jdbc:h2:mem}:${DB_PORT:testdb}
+    url: ${DB_URL:jdbc:h2:mem:animes}
     username: ${LOCAL_USER:sa}
     password: ${LOCAL_PASSWORD:}
   jpa:

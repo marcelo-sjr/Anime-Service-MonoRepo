@@ -4,6 +4,7 @@ import br.dev.marcelojunior.DTO.AnimePostRequest;
 import br.dev.marcelojunior.DTO.AnimePutRequest;
 import br.dev.marcelojunior.DTO.AnimeResponse;
 import br.dev.marcelojunior.service.AnimeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class AnimeController {
     }
 
     @PostMapping("save")
-    public ResponseEntity<AnimeResponse> save(@RequestBody AnimePostRequest request){
+    public ResponseEntity<AnimeResponse> save(@RequestBody @Valid AnimePostRequest request){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(request));
     }
 
@@ -40,7 +41,7 @@ public class AnimeController {
     }
 
     @PutMapping("update")
-    public ResponseEntity<Void> update(@RequestBody AnimePutRequest request){
+    public ResponseEntity<Void> update(@RequestBody @Valid AnimePutRequest request){
         service.update(request);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

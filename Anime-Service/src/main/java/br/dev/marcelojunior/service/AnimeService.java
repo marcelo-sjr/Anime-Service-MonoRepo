@@ -19,10 +19,10 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 public class AnimeService {
 
     private final AnimeRepository repository;
-    private final AnimeMapper mapper = AnimeMapper.INSTANCE;
+    private final AnimeMapper mapper;
 
     public List<AnimeResponse> findAll(String name){
-        if (name != null){
+        if (name != null && !name.isBlank()){
             return mapper.toResponseList(repository.findByNameContainingIgnoreCase(name));
         }
         return mapper.toResponseList(repository.findAll());

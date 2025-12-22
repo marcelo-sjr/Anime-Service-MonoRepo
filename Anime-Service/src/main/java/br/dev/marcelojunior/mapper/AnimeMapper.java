@@ -5,21 +5,19 @@ import br.dev.marcelojunior.DTO.AnimePutRequest;
 import br.dev.marcelojunior.DTO.AnimeResponse;
 import br.dev.marcelojunior.model.Anime;
 import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
+import org.mapstruct.MappingConstants;
 
 import java.util.List;
 
-@Mapper
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface AnimeMapper {
 
-    AnimeMapper INSTANCE = Mappers.getMapper(AnimeMapper.class);
+    Anime toAnime(AnimePostRequest request);
 
-    public Anime toAnime(AnimePostRequest request);
+    AnimeResponse toResponse(Anime entity);
 
-    public AnimeResponse toResponse(Anime entity);
+    Anime updateAnime(AnimePutRequest request);
 
-    public Anime updateAnime(AnimePutRequest request);
-
-    public List<AnimeResponse> toResponseList(List<Anime> entities);
+    List<AnimeResponse> toResponseList(List<Anime> entities);
 }
 

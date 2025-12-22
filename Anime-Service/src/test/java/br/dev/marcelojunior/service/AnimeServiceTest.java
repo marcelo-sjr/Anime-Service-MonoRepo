@@ -84,12 +84,11 @@ class AnimeServiceTest {
     @ParameterizedTest
     @MethodSource("findAllWithArgs")
     @Order(3)
-    public void findAll_shouldFilterByNameContainingIgnoreCase_whenArgIsNotNull(
+    public void findAll_shouldFilterByNameContainingIgnoreCase_whenArgIsNotNullNorBlank(
             String args,
             List<Anime> repositoryReturn,
             List<AnimeResponse> mapperReturn) {
-        BDDMockito.when(repository.findByNameContainingIgnoreCase(args))
-                .thenReturn(repositoryReturn);
+        BDDMockito.when(repository.findByNameContainingIgnoreCase(args)).thenReturn(repositoryReturn);
         BDDMockito.when(mapper.toResponseList(repositoryReturn)).thenReturn(mapperReturn);
 
         var animes = new ArrayList<>(service.findAll(args));

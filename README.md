@@ -99,7 +99,7 @@ Responsável pelo gerenciamento de animes.
 
 ---
 
-## 👤 User-Service
+## 👤 User-Service (Em desenvolvimento)
 
 Responsável pelo gerenciamento dos usuários da aplicação.
 
